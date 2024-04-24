@@ -185,7 +185,7 @@ To run the application, you need to have both the backend and the frontend up an
 
 #### 1. Run backend
 
-From the **backend** directory, run:
+From the **backend** directory, first copy `.env.example` to `.env` and change the value if you want. It doesn't necessarily matter for local development, but the secret value in production should be a random alphanumeric string with symbols. Once that's configured, run:
 
 ```bash
 python manage.py runserver
