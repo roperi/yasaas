@@ -34,7 +34,7 @@
     "web-vitals": "^3.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"python ../backend/manage.py runserver\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.3"
+    "@types/leaflet": "^1.9.3",
+    "concurrently": "^8.2.2"
   }
 }
