@@ -107,7 +107,7 @@ Install the following prerequisites:
 
 #### 1. Create a virtual environment
 
-From the **root** directory, run:
+From the **root** directory of the project, run:
 
 ```bash
 cd backend
@@ -181,22 +181,12 @@ npm install
 
 ### Run the application
 
-To run the application, you need to have both the backend and the frontend up and running.
+To run the application, you need to have both the backend and the frontend up and running. This is accomplished by using the `concurrently` npm package.
 
-#### 1. Run backend
-
-From the **backend** directory, run:
+From the **root** directory, run:
 
 ```bash
-python manage.py runserver
-```
-
-#### 2. Run frontend
-
-From the **frontend** directory, run:
-
-```bash
-npm start
+npm start --prefix frontend
 ```
 
 #### View the application
