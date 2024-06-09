@@ -168,7 +168,7 @@ When prompted, enter a username, email, and password.
 
 #### Frontend
 
-#### 1. Install required frontend dependencies
+#### Install required frontend dependencies
 
 From the **root** directory, run:
 
@@ -199,7 +199,7 @@ From the **frontend** directory, run:
 npm start
 ```
 
-#### 3. View the application
+#### View the application
 
 Go to http://localhost:3000/ to view the application.
 
@@ -214,7 +214,7 @@ Note: The Services model has three fields:
 2. Description
 3. Icon <- Use a MaterialUI outlined icon. For instance, if you want to use the MonetizationOnOutlined icon, write down __monetization_on_outlined__. Follow that pattern for any other outlined icon you want to use.    
 
-All outlined MaterialUI icons available see [here](https://mui.com/material-ui/material-icons/?theme=Outlined).
+All outlined MaterialUI icons are available [here](https://mui.com/material-ui/material-icons/?theme=Outlined).
 
 ### Customize the application
 
@@ -259,7 +259,7 @@ To modify the logo in the application, make changes in the ```frontend/src/layou
 To modify the two buttons in the Hero section, make changes in the ```frontend/src/components/HeroButtons.tsx``` file.
 
 
-### Configurations 
+### Configurations
 
 1. Append to the virtual environment file you created above (either `~/.virtualenvs/YaSaas/bin/activate`, `venv/bin/activate`,  or `venv\scripts\activate`). Make sure to put your own Stripe and AWS keys and don't forget to re-activate the virtual environment once you are done.
 ```
