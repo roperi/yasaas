@@ -252,7 +252,7 @@ To modify the two buttons in the Hero section, make changes in the ```frontend/s
 ### Configurations
 
 1. Append to the virtual environment file you created above (either `~/.virtualenvs/YaSaas/bin/activate`, `venv/bin/activate`,  or `venv\scripts\activate`). Make sure to put your own Stripe and AWS keys and don't forget to re-activate the virtual environment once you are done.
-```
+```bash
 # ~/.virtualenvs/yasaas/bin/activate
 
 
@@ -272,7 +272,7 @@ export AWS_SES_SECRET_ACCESS_KEY='YOUR-SES-SECRET-ACCESS-KEY'  # You can also us
 ```
    
 2. As for the frontend, create a `.env` file to hold the env variables used by React in the frontend and put the following in it (put your Stripe keys). Save it on the frontend root folder (i.e. `frontend/.env`).
-```
+```bash
 # frontend/.env
 
 
@@ -287,7 +287,7 @@ REACT_APP_PRICING_TABLE_ID='YOUR-STRIPE-PRICING-TABLE-ID'
 3. Update Google-Analytics references
 
    Update the following three files located in the frontend folder and put your Google Measurement ID in each of them.
-```
+```typescript
 # frontend/src/App.tsx
 ReactGA.initialize('YOUR-GOOGLE-ANALYTICS-MEASUREMENT-ID');
 
@@ -311,7 +311,7 @@ ReactGA.initialize('YOUR-GOOGLE-ANALYTICS-MEASUREMENT-ID');
 * For further customisation see [Django-auth-style](https://github.com/girder/django-auth-style)
 
 7. Update `backend/settings.py` to your liking.
-```
+```python
 # CUSTOM TITLES AND HEADERS
 INDEX_TITLE = "Data Dynamo"
 SITE_TITLE = "API Portal"
@@ -319,7 +319,7 @@ SITE_HEADER = "Data Dynamo API"
 ```
  
 8. Update the title tag in `frontend/public/index.html` to your liking.
-``` 
+```html
 <title>Data Dynamo</title>
 ```
 
@@ -362,7 +362,7 @@ In general, you should first create products, then subscriptions, and then a pri
 ### Stripe webhooks for local development
 
 Install stripe client (linux)
-```
+```bash
 cd ~/opt
 wget https://github.com/stripe/stripe-cli/releases/download/v1.18.0/stripe_1.18.0_linux_x86_64.tar.gz
 tar -xvf stripe_1.18.0_linux_x86_64.tar.gz 
@@ -389,7 +389,7 @@ Things to consider:
 * When configuring your Stripe product's payment settings __make sure to check "Don't show confirmation page" and redirect customers to http://localhost:8000/admin__
 * Review the following Subscription webhook view to make sure you understand how Staff and Group permissions are granted to the user after he/she successfully pays:
 
-```
+```python
 ## Excerpt from the stripe_webhook view found in backend/subscriptions/views.py
 
  product_name = stripe.Product.retrieve(subscription.plan.product).name
@@ -423,7 +423,7 @@ python manage.py startapp your_app_name
 
 2. Configure the App in settings.py:
 Open the settings.py file in your Django project directory and add your app to the INSTALLED_APPS list. Find the INSTALLED_APPS section and add your app's name.
-```
+```python
 INSTALLED_APPS = [
     # ...
     'your_app_name',
@@ -433,7 +433,7 @@ INSTALLED_APPS = [
 
 You can now safely disable the dataproducts app by commenting it. 
 
-```
+```python
 INSTALLED_APPS = [
     # dataproducts,
     'your_app_name',
@@ -449,7 +449,7 @@ INSTALLED_APPS = [
 
     After defining your models, run the following commands to apply the initial database migrations:
 
-```
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
@@ -462,7 +462,7 @@ python manage.py migrate
 
 If you want to conditionally include or exclude columns from the `list_display` based on the user's group membership, you can create a function that generates the list of columns dynamically. Here's an example:
 
-```
+```python
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from .models import YourModel
@@ -507,7 +507,7 @@ admin.site.register(YourModel, YourModelAdmin)
 
 Likewise, if you want to conditionally display actions based on user's group membership you could do modify the `get_actions` method. Example:
 
-```
+```python
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from .models import YourModel
@@ -574,7 +574,7 @@ To deploy you could use Nginx, Gunicorn and Django in tandem.
 
 #### Update main project's settings
 
-``` 
+```python
 # backend/backend/settings.py
 
 
@@ -621,7 +621,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 Update your backend's virtual environment files for production use:
 
-``` 
+```bash
 # ~/.virtualenvs/yasaas/bin/activate 
 
 
@@ -642,7 +642,7 @@ export AWS_SES_SECRET_ACCESS_KEY='YOUR-SES-SECRET-ACCESS-KEY'  # You can also us
 
 Update your frontend's env file for production use. Note that so far we have been using the "api" subdomain for the backend server. But you could use __dashboard__ instead of __api__ , or whatever you want, remember that your customer will access his/her data from __https://subdomain-name.domain-name.com/admin__. Whatever subdomain you end up using, just make sure to update whenever you see __api__ in all snippets shown in this document.
 
-```
+```bash
 # frontend/.env
 
 
@@ -660,7 +660,7 @@ REACT_APP_PRICING_TABLE_ID='YOUR-STRIPE-PRICING-TABLE-ID'
 
 Build backend example:
 
-``` 
+```bash
 cd backend/
 python manage.py collectstatic
 sudo mkdir -p /var/www/html/yasaas/backend/static
@@ -670,7 +670,7 @@ sudo cp -r staticfiles/* /var/www/html/yasaas/backend/static/
 #### Build frontend
 
 Build frontend example:
-``` 
+```bash
 export REACT_APP_BASE_URL=http://localhost:8000/
 export REACT_APP_SITE_URL=http://localhost:3000/
 export REACT_APP_SIGNUP_URL=http://localhost:8000/accounts/signup
@@ -691,7 +691,7 @@ Give the project folder access to the Nginx server:
 
 In the backend folder there's a `bin` subfolder. In it create a `gunicorn_start_backend.sh` bash script. Update it to fit your needs (i.e. app name, paths and/or username). 
 
-``` 
+```bash
 # backend/bin/gunicorn_start_backend.sh
 
 
