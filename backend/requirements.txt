@@ -1,5 +1,5 @@
 asgiref==3.7.2
-backports.zoneinfo==0.2.1
+#backports.zoneinfo==0.2.1
 beautifulsoup4==4.12.3
 certifi==2023.11.17
 cffi==1.16.0

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()  # Loads variables from .env into the environment
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
+    'localhost','127.0.0.1'
 ]
 
 # Application definition
