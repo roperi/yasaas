@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Third-party
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'subscriptions.apps.SubscriptionsConfig',
     'auth_style',
@@ -66,6 +67,16 @@ INSTALLED_APPS = [
     'dataproduct',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

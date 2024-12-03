@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -22,8 +24,10 @@ interface Props {
 
 const Header = ({ onSidebarOpen }: Props): JSX.Element => {
   const siteUrl = process.env.REACT_APP_SITE_URL
-  const signupUrl = process.env.REACT_APP_SIGNUP_URL
-  const signinUrl = process.env.REACT_APP_SIGNIN_URL
+//   const signupUrl = process.env.REACT_APP_SIGNUP_URL
+//   const signinUrl = process.env.REACT_APP_SIGNIN_URL
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -74,8 +78,32 @@ const Header = ({ onSidebarOpen }: Props): JSX.Element => {
             <CustomButton href={`${siteUrl}#pricing`} text='Pricing' />
             <CustomButton href={`${siteUrl}#about`} text='About' />
             <CustomButton href={`${siteUrl}#contact`} text='Contact' />
-            <CustomButton href={`${signupUrl}`} text='Signup' />
-            <CustomButton href={`${signinUrl}`} text='Sign in' />
+             <nav>
+                  {isAuthenticated ? (
+                    <Button onClick={logout}>Logout</Button>
+                  ) : (
+                    <>
+                  <Button
+                    component={RouterLink}
+                    to="/signup"
+                    variant="contained"
+                    color="primary"
+                    sx={{ margin: 1 }}
+                  >
+                    SIGN UP
+                  </Button>
+                  <Button
+                    component={RouterLink}
+                    to="/login"
+                    variant="outlined"
+                    color="primary"
+                    sx={{ margin: 1 }}
+                  >
+                    LOGIN
+                  </Button>
+                    </>
+                  )}
+                </nav>
           </Box>
           <Divider
             orientation='vertical'

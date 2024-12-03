@@ -9,6 +9,8 @@ import getTheme from './theme/theme';
 import ColorModeContext from './utils/ColorModeContext';
 import Layout from './layout/Layout';
 import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import StripePricing from './pages/PricingTable';
 
 
@@ -64,6 +66,8 @@ const App = (): JSX.Element => {
             <Layout>
               <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/pricing-table" element={<StripePricing />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
