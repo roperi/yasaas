@@ -1,5 +1,3 @@
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,14 +10,7 @@ from .serializers import UserRegistrationSerializer, CustomTokenObtainPairSerial
 class UserRegistrationView(APIView):
     permission_classes = [AllowAny]
 
-    @swagger_auto_schema(
-        operation_description="Register a new user",
-        request_body=UserRegistrationSerializer,
-        responses={
-            201: "User created successfully",
-            400: "Validation errors"
-        },
-    )
+
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
